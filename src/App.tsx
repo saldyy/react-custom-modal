@@ -15,7 +15,7 @@ function App() {
         Toggle Modal
       </button>
       <p>Random content</p>
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} HeaderComponent={<div>Header outer</div>} />
     </>
   );
 }

@@ -22,9 +22,15 @@ const modalContainerStyle: React.CSSProperties = {
 const Modal = ({
   isOpen,
   onClose,
+  HeaderComponent,
+  BodyComponent,
+  FooterComponent,
 }: {
   isOpen: boolean;
   onClose: () => void;
+  HeaderComponent?: JSX.Element | null;
+  BodyComponent?: JSX.Element | null;
+  FooterComponent?: JSX.Element | null;
 }) => {
   if (!isOpen) return null;
 
@@ -32,9 +38,15 @@ const Modal = ({
     <>
       <div style={backgroundStyle} />
       <div style={modalContainerStyle}>
-        <div>
-          <button onClick={onClose}>Close</button>
-        </div>
+        {HeaderComponent ? HeaderComponent : <div>Title</div>}
+        {BodyComponent ? BodyComponent : <div>Body</div>}
+        {FooterComponent ? (
+          FooterComponent
+        ) : (
+          <div>
+            <button onClick={onClose}>Close</button>
+          </div>
+        )}
       </div>
     </>,
     document.getElementById("portal-modal")!
